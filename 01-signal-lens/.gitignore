@@ -1,0 +1,44 @@
+# Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# Python (local dev only - not deployed)
+__pycache__/
+*.py[cod]
+.env
+.env.local
+.env*.local
+backend/.env
+.venv
+venv/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+.env.vercel.local
+
+# AI tools
+.kiro/
+.gemini/
+
+# PDFs (resume samples not tracked)
+*.pdf

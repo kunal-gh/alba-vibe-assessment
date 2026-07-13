@@ -1,0 +1,130 @@
+{
+  "placeholderImages": [
+    {
+      "id": "wedding-1",
+      "description": "A newly married couple smiling at each other during their wedding ceremony.",
+      "imageUrl": "https://images.unsplash.com/photo-1688422763790-93430fabf0de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d2VkZGluZyUyMGNvdXBsZXxlbnwwfHx8fDE3NjE2NDg0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding couple"
+    },
+    {
+      "id": "wedding-2",
+      "description": "A beautiful wedding cake with intricate flower decorations.",
+      "imageUrl": "https://images.unsplash.com/photo-1574538860416-baadc5d4ec57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3ZWRkaW5nJTIwY2FrZXxlbnwwfHx8fDE3NjE2NzY4NDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding cake"
+    },
+    {
+      "id": "wedding-3",
+      "description": "A bride and groom walking down the aisle after their wedding ceremony.",
+      "imageUrl": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3ZWRkaW5nJTIwY2VyZW1vbnl8ZW58MHx8fHwxNzYxNjQ1NjQ2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding ceremony"
+    },
+    {
+      "id": "portrait-1",
+      "description": "A close-up portrait of a woman with striking eyes.",
+      "imageUrl": "https://images.unsplash.com/photo-1634595477722-7bc68dd410fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc2MTcxODIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait woman"
+    },
+    {
+      "id": "portrait-2",
+      "description": "A man looking thoughtfully out of a window.",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NjE2NDExMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait man"
+    },
+    {
+      "id": "portrait-3",
+      "description": "A street style portrait of a person in a vibrant city.",
+      "imageUrl": "https://images.unsplash.com/photo-1684824473141-b086f8cbe18e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHN0cmVldHxlbnwwfHx8fDE3NjE2NzYxNjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait street"
+    },
+    {
+      "id": "event-1",
+      "description": "A crowd of people enjoying a public event.",
+      "imageUrl": "https://images.unsplash.com/photo-1580688027085-8220709e3d84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxldmVudCUyMGNyb3dkfGVufDB8fHx8MTc2MTYxODQ3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event crowd"
+    },
+    {
+      "id": "event-2",
+      "description": "A speaker on stage at a conference.",
+      "imageUrl": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxldmVudCUyMGNvbmZlcmVuY2V8ZW58MHx8fHwxNzYxNjQzODAxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event conference"
+    },
+    {
+      "id": "event-3",
+      "description": "Colorful fireworks at a night event.",
+      "imageUrl": "https://images.unsplash.com/photo-1626314096024-ad9bcfb3a58a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxldmVudCUyMGZpcmV3b3Jrc3xlbnwwfHx8fDE3NjE3MjQxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event fireworks"
+    },
+    {
+      "id": "fashion-1",
+      "description": "A model posing in a high-fashion outfit.",
+      "imageUrl": "https://images.unsplash.com/photo-1619086303291-0ef7699e4b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fHx8MTc2MTY2MDgxMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion model"
+    },
+    {
+      "id": "fashion-2",
+      "description": "A close-up of a designer handbag and shoes.",
+      "imageUrl": "https://images.unsplash.com/photo-1665702860632-4dfcd4b2d869?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFzaGlvbiUyMGFjY2Vzc29yeXxlbnwwfHx8fDE3NjE2OTcwMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion accessory"
+    },
+    {
+      "id": "fashion-3",
+      "description": "A runway show with models walking down the catwalk.",
+      "imageUrl": "https://images.unsplash.com/photo-1571924848943-25c2c95bbb4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmYXNoaW9uJTIwcnVud2F5fGVufDB8fHx8MTc2MTY2Mzk2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion runway"
+    },
+    {
+      "id": "concert-1",
+      "description": "A guitarist playing on stage with bright lights.",
+      "imageUrl": "https://images.unsplash.com/photo-1734497036218-ac3af2e7c3eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb25jZXJ0JTIwZ3VpdGFyfGVufDB8fHx8MTc2MTcyNDUzNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert guitar"
+    },
+    {
+      "id": "concert-2",
+      "description": "A singer performing to a large audience.",
+      "imageUrl": "https://images.unsplash.com/photo-1699802704760-8f1d0f0bdc47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb25jZXJ0JTIwc2luZ2VyfGVufDB8fHx8MTc2MTYzNTY4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert singer"
+    },
+    {
+      "id": "concert-3",
+      "description": "The crowd at a concert with their hands in the air.",
+      "imageUrl": "https://images.unsplash.com/photo-1533137098665-47ca60257cec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb25jZXJ0JTIwY3Jvd2R8ZW58MHx8fHwxNzYxNjE3MDkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert crowd"
+    },
+    {
+      "id": "street-1",
+      "description": "A busy street scene in a city at night.",
+      "imageUrl": "https://images.unsplash.com/photo-1662877717397-361d8bce48d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzdHJlZXQlMjBjaXR5fGVufDB8fHx8MTc2MTYzNTA0OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "street city"
+    },
+    {
+      "id": "street-2",
+      "description": "A person walking down a colorful alleyway.",
+      "imageUrl": "https://images.unsplash.com/photo-1711921730562-bb8f4fab7e4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdHJlZXQlMjBhbGxleXxlbnwwfHx8fDE3NjE3MjQ1MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "street alley"
+    },
+    {
+      "id": "street-3",
+      "description": "A black and white photo of a classic car on the street.",
+      "imageUrl": "https://images.unsplash.com/photo-1711125174987-645d1a9d6466?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdHJlZXQlMjBjYXJ8ZW58MHx8fHwxNzYxNzI0NTM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "street car"
+    },
+    {
+      "id": "ai-1",
+      "description": "A futuristic city skyline generated by AI.",
+      "imageUrl": "https://images.unsplash.com/photo-1688511922474-1282213d298f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhaSUyMGFydHxlbnwwfHx8fDE3NjE3MjQ4ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ai art"
+    },
+    {
+      "id": "ai-2",
+      "description": "An abstract digital painting created by an AI.",
+      "imageUrl": "https://images.unsplash.com/photo-1696232130384-a1b7a69b7677?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMGFpJTIwYXJ0fGVufDB8fHx8MTc2MTcyNDg4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract ai"
+    },
+    {
+      "id": "ai-new-1",
+      "description": "A surreal, abstract image generated by AI, showing vibrant, swirling colors.",
+      "imageUrl": "https://images.unsplash.com/photo-1729671009317-fa1776f2165e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBzdXJyZWFsfGVufDB8fHx8MTc2MjE4NDQ3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract surreal"
+    }
+  ]
+}

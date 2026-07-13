@@ -1,0 +1,110 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 96%;
+    --foreground: 240 10% 3.9%;
+    --card: 40 33% 96%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 40 33% 96%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5% 35%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 240 5% 65%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+  html {
+    /* clip: no scroll container created, so position:fixed works on mobile */
+    overflow-x: clip;
+  }
+  body {
+    overflow-x: clip;
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 text-sm text-white outline-none transition focus:border-[#c7ff45] placeholder:text-white/25;
+  }
+
+  .action {
+    @apply rounded-xl bg-[#c7ff45] px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-[#d7ff77] disabled:opacity-50;
+  }
+
+  .icon-button {
+    @apply grid h-8 w-8 place-items-center rounded-lg border border-white/10 text-white/55 transition hover:border-white/25 hover:bg-white/10 hover:text-white;
+  }
+
+  .embla__slide {
+    @apply transition-transform duration-300 ease-in-out;
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  .embla__slide.is-selected {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .embla__slide.is-selected .testimonial-card {
+    @apply cursor-default;
+  }
+  .embla__slide:not(.is-selected) .testimonial-card {
+    @apply cursor-pointer;
+  }
+
+  .embla__slide.is-selected .testimonial-card:hover {
+    @apply scale-105 shadow-2xl;
+  }
+}

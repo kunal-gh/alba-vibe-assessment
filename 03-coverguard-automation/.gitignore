@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Output (generated files — regenerated on each run)
+output/annotated/*.png
+output/processed/*.png
+coverguard.log
+
+# OCR model caches
+~/.EasyOCR/
+~/.paddleocr/
+
+# Tests output
+tests/test_results.json
+
+# Gemini agent files
+.gemini/
+

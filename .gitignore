@@ -1,0 +1,29 @@
+# Environment and credentials
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# JavaScript / Next.js
+node_modules/
+.next/
+dist/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated files and local uploads
+output/
+uploads/
+*.db
+*.sqlite
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
