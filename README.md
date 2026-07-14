@@ -4,7 +4,7 @@ Three focused products built around evidence-based AI workflows, secure data man
 
 | Assignment | Submission | Advanced requirement | Local verification |
 | --- | --- | --- | --- |
-| 01 | [Signal Lens](./01-signal-lens) | Backend-for-frontend with cache, retries, and graceful upstream failure | Pending final frontend build check |
+| 01 | [Signal Lens](./01-signal-lens) | Backend-for-frontend with cache, retries, and graceful upstream failure | `npm run build` passes |
 | 02 | [StudioFlow](./02-studioflow) | Supabase Auth, RLS ownership boundary, and realtime updates | `npm run build` passes |
 | 03 | [CoverGuard Automation](./03-coverguard-automation) | Retry/backoff plus a dedicated n8n error workflow | Both workflow JSON files parse successfully |
 
