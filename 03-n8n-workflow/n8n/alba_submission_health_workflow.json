@@ -113,14 +113,25 @@
     {
       "parameters": {
         "conditions": {
-          "string": [
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
             {
-              "value1": "={{ $json.status }}",
-              "operation": "equal",
-              "value2": "READY"
+              "id": "report-ready-condition",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "READY",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
             }
-          ]
-        }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
       },
       "id": "report-ready-router",
       "name": "Report Ready?",
@@ -161,14 +172,25 @@
     {
       "parameters": {
         "conditions": {
-          "string": [
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
             {
-              "value1": "={{ $json.trigger }}",
-              "operation": "equal",
-              "value2": "webhook"
+              "id": "webhook-trigger-condition",
+              "leftValue": "={{ $json.trigger }}",
+              "rightValue": "webhook",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
             }
-          ]
-        }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
       },
       "id": "webhook-request-router",
       "name": "Webhook Request?",
@@ -347,7 +369,7 @@
   "tags": [],
   "triggerCount": 2,
   "updatedAt": "2026-07-14T00:00:00.000Z",
-  "versionId": "alba-submission-health-v1",
+  "versionId": "alba-submission-health-v2",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "alba-submission-health-report"
