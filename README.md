@@ -12,8 +12,8 @@ Three focused products built around evidence-based AI workflows, secure data man
 
 | Assignment | Live URL | Repository | Walkthrough |
 | --- | --- | --- | --- |
-| Signal Lens | Add after Vercel deployment | This repository | Add Loom URL |
-| StudioFlow | Add after Vercel deployment | This repository | Add Loom URL |
+| Signal Lens | https://signal-lens-alba.vercel.app | This repository | Add Loom URL |
+| StudioFlow | https://studioflow-alba.vercel.app | This repository | Add Loom URL |
 | CoverGuard Automation | Add n8n Cloud URL or attach exported JSON | This repository | Add Loom URL |
 
 ## Repository layout
