@@ -26,7 +26,8 @@
 ## How I verified it works
 
 - Checked the component paths for role brief, file validation, loading skeletons, empty result state, result rendering, and error handling.
-- Will run the production frontend build and complete a live upstream/downstream smoke test before deployment.
+- Ran `npm run build` in `01-signal-lens/frontend`; the production Next.js build completed successfully.
+- Confirmed the deployed Vercel URL returns HTTP 200.
 
 ## Known limitations
 
