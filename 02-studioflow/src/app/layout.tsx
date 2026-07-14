@@ -7,20 +7,17 @@ import { Providers } from '@/components/providers';
 import { ImageKitProvider } from '@/components/imagekit-provider';
 
 export const metadata: Metadata = {
-  title: "Through Hardik's Eye | Premier Photography",
-  description: 'Global photography studio specializing in weddings, fashion, and portraits.',
-  keywords: "photography, portfolio, wedding photography, fashion shoot, portraits, NYC photographer, Hardik studio",
+  title: 'StudioFlow — Asset Operations',
+  description: 'A secure creative-asset operations dashboard powered by Supabase.',
+  keywords: 'creative operations, asset management, Supabase, realtime dashboard, project planning',
   openGraph: {
-    title: "Through Hardik's Eye",
-    description: "Visual stories, captured with soul.",
-    url: "https://civilisation.ai",
-    siteName: "Hardik Studio",
-    images: [{ url: "https://your-domain.vercel.app/default-og-image.jpg", width: 1200, height: 630 }],
+    title: 'StudioFlow — Asset Operations',
+    description: 'Secure projects, assets, analytics, and realtime collaboration.',
+    siteName: 'StudioFlow',
     locale: "en_US",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Through Hardik's Eye", description: "Visual stories, captured with soul." },
-  alternates: { canonical: "https://civilisation.ai" }
+  twitter: { card: "summary_large_image", title: 'StudioFlow — Asset Operations', description: 'Secure creative-asset operations with Supabase.' },
 };
 
 export const viewport: import("next").Viewport = {

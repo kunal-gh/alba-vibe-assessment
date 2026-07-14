@@ -19,6 +19,7 @@ venv/
 # Generated files and local uploads
 output/
 uploads/
+*.log
 *.db
 *.sqlite
 
