@@ -87,6 +87,8 @@ Prerequisites: Node.js 20+ and a Supabase project.
    DEMO_PASSWORD=StudioFlow-demo-2026
    ```
 
+   Get the publishable key from Supabase Project Settings → API Keys. For the local seed only, use a Secret key (`sb_secret_...`) or the legacy `service_role` key for `SUPABASE_SERVICE_ROLE_KEY`; never use that server key in a `NEXT_PUBLIC_*` variable.
+
 3. Install and seed:
 
    ```bash

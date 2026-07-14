@@ -2,7 +2,13 @@ import { createClient } from '@supabase/supabase-js';
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-if (!url || !serviceRoleKey) throw new Error('Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY before seeding.');
+const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+if (!url || !serviceRoleKey || serviceRoleKey.startsWith('your_')) {
+  throw new Error('Set NEXT_PUBLIC_SUPABASE_URL and a real SUPABASE_SERVICE_ROLE_KEY (Supabase Secret/service_role key) before seeding.');
+}
+if (serviceRoleKey === publishableKey || serviceRoleKey.startsWith('sb_publishable_')) {
+  throw new Error('SUPABASE_SERVICE_ROLE_KEY contains the browser publishable/anon key. Use a Supabase Secret key or legacy service_role key instead.');
+}
 
 const supabase = createClient(url, serviceRoleKey, { auth: { autoRefreshToken: false, persistSession: false } });
 const email = process.env.DEMO_EMAIL ?? 'demo@studioflow.local';
