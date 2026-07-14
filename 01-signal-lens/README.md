@@ -4,6 +4,10 @@ Signal Lens helps a recruiter compare a role brief against a small batch of cand
 
 This is the Assignment 1 submission: a responsive Next.js product with a FastAPI analysis service and the Google Gemini API for semantic embeddings and scanned-document OCR.
 
+## Live deployment
+
+[Open Signal Lens](https://signal-lens-alba.vercel.app)
+
 ## What is included
 
 - Drag-and-drop multi-file resume intake with a role brief.

@@ -4,6 +4,10 @@ StudioFlow is a secure asset-planning dashboard for a small creative team. It ma
 
 This is the Assignment 2 submission. The assessment experience lives at `/studio`; the application root redirects there so reviewers land directly on it. The imported photography portfolio remains in the repository as the visual/component foundation, but it is not the submission surface.
 
+## Live deployment
+
+[Open StudioFlow](https://studioflow-alba.vercel.app) — currently showing the intentional Supabase setup guard until the project URL and publishable key are connected.
+
 ## Product features
 
 - Email/password sign-up and sign-in with Supabase Auth.
