@@ -22,10 +22,7 @@ https://github.com/kunal-gh/alba-vibe-assessment
 alba-vibe-assessment/
 |-- 01-signal-lens/        # Creative API-integrated web app
 |-- 02-studioflow/         # Supabase-backed data dashboard
-|-- 03-n8n-workflow/       # Importable n8n automation workflow
-|-- LOOM_SCRIPTS.md        # Recording scripts for all walkthroughs
-|-- PORTAL_NOTES.md        # Notes to paste into the assessment portal
-`-- SUBMISSION_CHECKLIST.md
+`-- 03-n8n-workflow/       # Importable n8n automation workflow
 ```
 
 ## Assignment 1: Signal Lens
