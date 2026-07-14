@@ -25,6 +25,7 @@
 - Legacy routes required Prisma generation during build even though StudioFlow uses Supabase. Restored `prisma generate` in the build script without invoking the old local database seed.
 - Static build encountered missing Supabase variables. The Supabase helper uses a safe placeholder for compilation while the UI gives an explicit configuration state at runtime.
 - The original root was a portfolio page. Redirected it to `/studio` so a deployed reviewer does not need hidden navigation instructions.
+- Added the Supabase project URL to the linked Vercel project in all three environments. Kept the publishable key and service-role key out of the repository and documented the remaining dashboard setup.
 
 ## How I verified it works
 
@@ -34,7 +35,7 @@
 
 ## Known limitations
 
-- End-to-end Supabase verification requires a project URL and credentials configured by the deployer.
+- End-to-end Supabase verification requires the publishable key, schema migration, and demo seed to be configured in the deployer's Supabase project.
 - Assets are URL records, not uploaded files.
 - The legacy portfolio code remains in the repository but is not part of `/studio`.
 

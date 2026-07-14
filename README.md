@@ -28,7 +28,7 @@ alba-vibe-assessment/
 ## Before submitting
 
 - Deploy Signal Lens and StudioFlow, then replace the placeholder URLs above.
-- Provision Supabase, apply `02-studioflow/supabase/schema.sql`, and use the documented demo account.
+- Provision Supabase, add the publishable key to the StudioFlow Vercel project, apply `02-studioflow/supabase/schema.sql`, and use the documented demo account.
 - Import both CoverGuard workflow JSON files into n8n, connect the error workflow, configure credentials, and capture one successful run.
 - Record one short walkthrough covering a proud technical decision and one honest limitation.
 - Confirm no `.env` or credential files are staged.

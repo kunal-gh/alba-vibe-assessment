@@ -6,7 +6,9 @@ This is the Assignment 2 submission. The assessment experience lives at `/studio
 
 ## Live deployment
 
-[Open StudioFlow](https://studioflow-alba.vercel.app) — currently showing the intentional Supabase setup guard until the project URL and publishable key are connected.
+[Open StudioFlow](https://studioflow-alba.vercel.app) — currently showing the intentional Supabase setup guard until the publishable key is connected and the schema is applied.
+
+The Supabase project URL is already configured in the Vercel Development, Preview, and Production environments. The remaining hosted setup is deliberately manual: add the project's publishable (anon) key in Vercel, run `supabase/schema.sql` in the Supabase SQL Editor, then redeploy the project.
 
 ## Product features
 
