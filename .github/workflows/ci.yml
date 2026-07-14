@@ -45,7 +45,7 @@ jobs:
       - run: npm run build
 
   python-and-workflow-checks:
-    name: Python and n8n artifact checks
+    name: Backend and n8n artifact checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +55,7 @@ jobs:
           python-version: '3.11'
 
       - name: Compile Python entry points
-        run: python -m py_compile 01-signal-lens/backend/main.py 03-coverguard-automation/main.py
+        run: python -m py_compile 01-signal-lens/backend/main.py
 
       - name: Validate exported n8n workflows
-        run: node -e "const fs=require('fs'); for (const file of ['03-coverguard-automation/n8n/coverguard_workflow.json','03-coverguard-automation/n8n/coverguard_error_workflow.json']) JSON.parse(fs.readFileSync(file,'utf8')); console.log('n8n JSON OK')"
+        run: node -e "const fs=require('fs'); for (const file of ['03-n8n-workflow/n8n/alba_submission_health_workflow.json','03-n8n-workflow/evidence/sample-output.json']) JSON.parse(fs.readFileSync(file,'utf8')); console.log('n8n JSON OK')"
