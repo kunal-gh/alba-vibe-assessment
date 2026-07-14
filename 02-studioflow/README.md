@@ -91,7 +91,7 @@ Prerequisites: Node.js 20+ and a Supabase project.
 
    ```bash
    npm install
-   node scripts/seed-studioflow.mjs
+   node --env-file=.env.local scripts/seed-studioflow.mjs
    npm run dev
    ```
 

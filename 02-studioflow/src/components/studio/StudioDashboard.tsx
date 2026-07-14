@@ -49,7 +49,7 @@ export default function StudioDashboard() {
         <section className="max-w-lg rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7">
           <p className="text-xs uppercase tracking-[0.18em] text-amber-200">Configuration needed</p>
           <h1 className="mt-3 text-3xl font-semibold">Connect Supabase to open StudioFlow.</h1>
-          <p className="mt-3 text-sm leading-6 text-amber-50/70">Copy <code>.env.example</code> to <code>.env.local</code>, add the project URL and publishable key, then run <code>node scripts/seed-studioflow.mjs</code> to provision a demo account.</p>
+          <p className="mt-3 text-sm leading-6 text-amber-50/70">Copy <code>.env.example</code> to <code>.env.local</code>, add the project URL and publishable key, then run <code>node --env-file=.env.local scripts/seed-studioflow.mjs</code> to provision a demo account.</p>
         </section>
       </main>
     );
