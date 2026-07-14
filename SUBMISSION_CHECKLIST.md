@@ -1,33 +1,39 @@
 # Submission Checklist
 
-## Assignment 1 — Signal Lens
+## Assignment 1: Signal Lens
 
-- [ ] Deploy `01-signal-lens/frontend` to Vercel.
-- [ ] Deploy the FastAPI service or set `SIGNAL_LENS_API_URL` to its reachable URL.
-- [ ] Set `GOOGLE_API_KEY` only in the backend host (optional fallback is supported).
-- [ ] Test a normal request, an empty upload, and an upstream-unavailable request.
-- [ ] Paste live URL and Loom URL into the assessment form.
+- [ ] Live URL opens: `https://signal-lens-alba.vercel.app`
+- [ ] Repository URL is entered: `https://github.com/kunal-gh/alba-vibe-assessment`
+- [ ] Tick all six core requirements in the portal.
+- [ ] Tick advanced option: **Your own backend**.
+- [ ] Paste the Assignment 1 note from `PORTAL_NOTES.md`.
+- [ ] Record and paste the Loom link.
 
-## Assignment 2 — StudioFlow
+## Assignment 2: StudioFlow
 
-- [ ] Create a Supabase project and run `02-studioflow/supabase/schema.sql` in SQL Editor.
-- [ ] Add the three Supabase values to Vercel environment settings.
-- [ ] Run the documented seed script and confirm the demo account can sign in.
-- [ ] Verify User B cannot see User A's rows using the README steps.
-- [ ] Open two tabs and confirm an edit is reflected live.
-- [ ] Paste live URL, repository URL, and demo credentials into the assessment form.
+- [ ] Live URL opens: `https://studioflow-alba.vercel.app/studio`
+- [ ] Demo login works: `demo@studioflow.local / StudioFlow-demo-2026`
+- [ ] Repository URL is entered: `https://github.com/kunal-gh/alba-vibe-assessment`
+- [ ] Tick all five core requirements in the portal.
+- [ ] Tick advanced option: **Secure, isolated data**.
+- [ ] Tick **Real-time updates** only if you show the two-tab realtime edit in the Loom.
+- [ ] Paste the Assignment 2 note from `PORTAL_NOTES.md`.
+- [ ] Record and paste the Loom link.
 
-## Assignment 3 — CoverGuard
+## Assignment 3: n8n workflow
 
-- [ ] Deploy the FastAPI vision service and set `COVERGUARD_API_URL` in n8n.
-- [ ] Import `coverguard_error_workflow.json` first, then `coverguard_workflow.json`.
-- [ ] Configure Google Drive, Airtable, Gmail, and the error-workflow email recipient.
-- [ ] Link the error workflow in the main workflow's settings.
-- [ ] Execute one sample file, capture the Airtable row/email or execution screenshot, and attach/export the JSON.
+- [ ] Import `03-n8n-workflow/n8n/alba_submission_health_workflow.json` into n8n.
+- [ ] Click **Execute workflow** and confirm `Manual Evidence Output` returns a report.
+- [ ] Activate the workflow and copy the production webhook URL if you have an n8n instance.
+- [ ] If the portal cannot accept a folder, attach `alba_submission_health_workflow.json` or a zip of `03-n8n-workflow`.
+- [ ] Repository URL is entered: `https://github.com/kunal-gh/alba-vibe-assessment`
+- [ ] Paste the Assignment 3 note from `PORTAL_NOTES.md`.
+- [ ] Record and paste the Loom link.
 
 ## Final pass
 
-- [ ] Every URL opens in an incognito window.
-- [ ] Repository is public or shared with the reviewers.
-- [ ] Each project has a README, BUILD_LOG, and `.env.example`.
-- [ ] No secrets, generated output, or local databases are committed.
+- [ ] All submitted URLs open in an incognito window.
+- [ ] Repository is public or shared with the reviewer.
+- [ ] Each assignment folder has README, BUILD_LOG, and `.env.example`.
+- [ ] No real secrets are committed.
+- [ ] Optional video checkbox is ticked only after the Loom link is in the form.

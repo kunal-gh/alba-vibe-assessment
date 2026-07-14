@@ -1,0 +1,355 @@
+{
+  "name": "Alba Submission Health Report",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-test-trigger",
+      "name": "Manual Test Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "path": "alba-submission-health",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "live-webhook-trigger",
+      "name": "Live Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -980,
+        360
+      ],
+      "webhookId": "alba-submission-health"
+    },
+    {
+      "parameters": {
+        "jsCode": "const incoming = $json ?? {};\nconst isWebhook = Boolean(incoming.headers || incoming.query || incoming.params);\n\nreturn [{\n  json: {\n    startedAt: new Date().toISOString(),\n    trigger: isWebhook ? 'webhook' : 'manual',\n    requester: incoming.query?.requester ?? 'reviewer',\n    path: incoming.path ?? '/manual-test'\n  }\n}];"
+      },
+      "id": "set-run-context",
+      "name": "Set Run Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        240
+      ],
+      "notes": "Normalizes manual and webhook executions into one run context."
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/kunal-gh/alba-vibe-assessment",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "alba-assessment-n8n"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "fetch-repo-metadata",
+      "name": "Fetch Repo Metadata",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -460,
+        240
+      ],
+      "continueOnFail": true,
+      "notes": "External API call 1: repository metadata from GitHub."
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/kunal-gh/alba-vibe-assessment/commits?per_page=5",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "alba-assessment-n8n"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "fetch-recent-commits",
+      "name": "Fetch Recent Commits",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -200,
+        240
+      ],
+      "continueOnFail": true,
+      "notes": "External API call 2: recent commit activity from GitHub."
+    },
+    {
+      "parameters": {
+        "jsCode": "const context = $('Set Run Context').first().json;\nconst repoItems = $items('Fetch Repo Metadata').map((item) => item.json);\nconst commitItemsRaw = $items('Fetch Recent Commits').map((item) => item.json);\nconst repo = repoItems[0] ?? {};\nconst commitItems = Array.isArray(commitItemsRaw[0]) ? commitItemsRaw[0] : commitItemsRaw;\nconst commits = commitItems.filter((commit) => commit && !commit.error && commit.sha);\nconst uniqueCommits = [...new Map(commits.map((commit) => [commit.sha, commit])).values()].slice(0, 5);\nconst apiFailed = Boolean(repo.error || repo.message === 'Not Found' || commitItemsRaw.some((item) => item?.error));\nconst pushedAt = repo.pushed_at ? new Date(repo.pushed_at) : null;\nconst hoursSincePush = pushedAt ? Math.max(0, Math.round((Date.now() - pushedAt.getTime()) / 36e5)) : null;\nconst staleRepo = hoursSincePush !== null && hoursSincePush > 72;\nconst missingCommits = uniqueCommits.length === 0;\nconst needsAttention = apiFailed || staleRepo || missingCommits;\nconst score = apiFailed\n  ? 45\n  : Math.max(70, Math.min(100, 100 - Math.max(0, hoursSincePush ?? 0) - Math.max(0, 5 - uniqueCommits.length) * 4));\nconst status = needsAttention ? 'ATTENTION' : 'READY';\nconst recentCommits = uniqueCommits.map((commit) => ({\n  sha: commit.sha.slice(0, 7),\n  message: (commit.commit?.message ?? 'No commit message').split('\\n')[0],\n  author: commit.commit?.author?.name ?? 'unknown',\n  date: commit.commit?.author?.date ?? null,\n  url: commit.html_url\n}));\nconst checks = [\n  {\n    name: 'GitHub API reachable',\n    passed: !apiFailed,\n    detail: apiFailed ? 'GitHub returned an error or incomplete payload.' : 'Repository metadata and commits were returned.'\n  },\n  {\n    name: 'Recent commit activity',\n    passed: !staleRepo && hoursSincePush !== null,\n    detail: hoursSincePush === null ? 'No push timestamp found.' : `${hoursSincePush} hours since last push.`\n  },\n  {\n    name: 'Commit list usable',\n    passed: !missingCommits,\n    detail: `${uniqueCommits.length} recent commits available for review.`\n  }\n];\nconst markdownReport = [\n  '## Alba Submission Health Report',\n  `Status: ${status}`,\n  `Score: ${score}`,\n  `Repository: ${repo.full_name ?? 'kunal-gh/alba-vibe-assessment'}`,\n  `Default branch: ${repo.default_branch ?? 'unknown'}`,\n  `Last push: ${repo.pushed_at ?? 'unknown'}`,\n  '',\n  '### Checks',\n  ...checks.map((check) => `- ${check.passed ? 'PASS' : 'ATTENTION'}: ${check.name} - ${check.detail}`),\n  '',\n  '### Recent commits',\n  ...recentCommits.map((commit) => `- ${commit.sha}: ${commit.message}`)\n].join('\\n');\n\nreturn [{\n  json: {\n    workflow: 'Alba Submission Health Report',\n    status,\n    score,\n    severity: needsAttention ? 'review' : 'normal',\n    generatedAt: new Date().toISOString(),\n    trigger: context.trigger,\n    requester: context.requester,\n    repository: repo.full_name ?? 'kunal-gh/alba-vibe-assessment',\n    repositoryUrl: repo.html_url ?? 'https://github.com/kunal-gh/alba-vibe-assessment',\n    defaultBranch: repo.default_branch ?? 'unknown',\n    lastPush: repo.pushed_at ?? null,\n    hoursSincePush,\n    recentCommitCount: uniqueCommits.length,\n    recentCommits,\n    checks,\n    markdownReport\n  }\n}];"
+      },
+      "id": "build-submission-report",
+      "name": "Build Submission Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        60,
+        240
+      ],
+      "notes": "Transforms and scores the GitHub data into one reviewer-friendly report."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "equal",
+              "value2": "READY"
+            }
+          ]
+        }
+      },
+      "id": "report-ready-router",
+      "name": "Report Ready?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        320,
+        240
+      ],
+      "notes": "Explicit conditional branch required by the assignment."
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map((item) => ({\n  json: {\n    ...item.json,\n    headline: 'Repository activity is current and the submission package is ready for final manual review.',\n    recommendedAction: 'Open the deployed URLs, record Loom, then submit.'\n  }\n}));"
+      },
+      "id": "prepare-ready-response",
+      "name": "Prepare Ready Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        580,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map((item) => ({\n  json: {\n    ...item.json,\n    headline: 'One or more readiness checks need attention before submission.',\n    recommendedAction: 'Review the failed checks, then rerun this workflow.'\n  }\n}));"
+      },
+      "id": "prepare-attention-response",
+      "name": "Prepare Attention Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        580,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.trigger }}",
+              "operation": "equal",
+              "value2": "webhook"
+            }
+          ]
+        }
+      },
+      "id": "webhook-request-router",
+      "name": "Webhook Request?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        840,
+        240
+      ],
+      "notes": "Manual executions end in evidence output; webhook executions return an HTTP response."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "respond-with-health-report",
+      "name": "Respond with Health Report",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        120
+      ],
+      "notes": "Delivered, verifiable output for the live webhook path."
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map((item) => ({ json: item.json }));"
+      },
+      "id": "manual-evidence-output",
+      "name": "Manual Evidence Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        360
+      ],
+      "notes": "Delivered, verifiable output for manual n8n execution screenshots."
+    }
+  ],
+  "connections": {
+    "Manual Test Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Run Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Live Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Run Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Run Context": {
+      "main": [
+        [
+          {
+            "node": "Fetch Repo Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Repo Metadata": {
+      "main": [
+        [
+          {
+            "node": "Fetch Recent Commits",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Recent Commits": {
+      "main": [
+        [
+          {
+            "node": "Build Submission Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Submission Report": {
+      "main": [
+        [
+          {
+            "node": "Report Ready?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Report Ready?": {
+      "main": [
+        [
+          {
+            "node": "Prepare Ready Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Attention Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Ready Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Request?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Attention Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Request?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Request?": {
+      "main": [
+        [
+          {
+            "node": "Respond with Health Report",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Manual Evidence Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2026-07-14T00:00:00.000Z",
+  "versionId": "alba-submission-health-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "alba-submission-health-report"
+  }
+}
