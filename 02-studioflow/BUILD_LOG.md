@@ -32,6 +32,7 @@
 - Ran `npm run build` successfully after the StudioFlow route, Supabase client, and dependencies were added.
 - Inspected the schema for ownership policies on every CRUD operation and subscription publication for both tables.
 - Prepared a reproducible seed script and manual two-user RLS/realtime verification script in the README.
+- Applied the schema/default migration, seeded the demo account, and verified through an authenticated Supabase client that the account can read one project and two assets.
 
 ## Known limitations
 
