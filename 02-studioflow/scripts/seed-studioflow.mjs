@@ -33,7 +33,7 @@ const { count } = await supabase.from('assets').select('*', { count: 'exact', he
 if (!count) {
   const { error } = await supabase.from('assets').insert([
     { user_id: user.id, project_id: project.id, title: 'Opening frame', image_url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80', tags: ['editorial', 'launch'], featured: true },
-    { user_id: user.id, project_id: project.id, title: 'Campaign texture', image_url: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1200&q=80', tags: ['texture', 'palette'] },
+    { user_id: user.id, project_id: project.id, title: 'Campaign texture', image_url: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1200&q=80', tags: ['texture', 'palette'], featured: false },
   ]);
   if (error) throw error;
 }

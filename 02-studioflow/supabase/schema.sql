@@ -26,6 +26,9 @@ create table if not exists public.assets (
   updated_at timestamptz not null default now()
 );
 
+-- Keep this explicit for projects created from an earlier schema revision.
+alter table public.assets alter column featured set default false;
+
 create index if not exists projects_owner_created_idx on public.projects(user_id, created_at desc);
 create index if not exists assets_owner_project_created_idx on public.assets(user_id, project_id, created_at desc);
 
