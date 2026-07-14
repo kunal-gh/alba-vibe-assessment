@@ -1,0 +1,61 @@
+name: Alba assessment CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  signal-lens:
+    name: Signal Lens frontend build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01-signal-lens/frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: 01-signal-lens/frontend/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+  studioflow:
+    name: StudioFlow production build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 02-studioflow
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: 02-studioflow/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+  python-and-workflow-checks:
+    name: Python and n8n artifact checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile Python entry points
+        run: python -m py_compile 01-signal-lens/backend/main.py 03-coverguard-automation/main.py
+
+      - name: Validate exported n8n workflows
+        run: node -e "const fs=require('fs'); for (const file of ['03-coverguard-automation/n8n/coverguard_workflow.json','03-coverguard-automation/n8n/coverguard_error_workflow.json']) JSON.parse(fs.readFileSync(file,'utf8')); console.log('n8n JSON OK')"
